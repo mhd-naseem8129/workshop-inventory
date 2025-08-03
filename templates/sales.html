@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Sales Tracker{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-card">
+        <h2>🧾 Record a Sale</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="spare_id">Select Spare</label>
+                <select name="spare_id" required>
+                    <option value="">-- Select --</option>
+                    {% for spare in spares %}
+                        <option value="{{ spare.id }}">{{ spare.name }} (Qty: {{ spare.quantity }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity Sold</label>
+                <input type="number" name="quantity" min="1" required>
+            </div>
+
+            <button type="submit" class="btn-login">Record Sale</button>
+        </form>
+
+        <hr>
+
+        <h3>📊 Recent Sales</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Spare</th>
+                    <th>Quantity</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sale in sales %}
+                    <tr>
+                        <td>{{ sale.spare.name }}</td>
+                        <td>{{ sale.quantity_sold }}</td>
+                        <td>{{ sale.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

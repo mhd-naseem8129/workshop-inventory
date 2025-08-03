@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Add Employee{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+  <div class="dashboard-card">
+    <h2>➕ Add Employee</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data" class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" name="name" required>
+
+      <label for="designation">Designation</label>
+      <input type="text" name="designation" required>
+
+      <label for="contact">Phone Number</label>
+      <input type="text" name="contact" required>
+
+      <label for="aadhaar">Aadhaar Number</label>
+      <input type="text" name="aadhaar" required>
+
+      <label for="joining_date">Joining Date</label>
+      <input type="date" name="joining_date" required>
+
+      <label for="aadhaar_image">Aadhaar Screenshot (PNG/JPG)</label>
+      <input type="file" name="aadhaar_image" accept="image/*" required>
+
+      <button type="submit" class="btn-login" style="margin-top: 20px;">Add Employee</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

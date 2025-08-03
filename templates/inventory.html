@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Inventory{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-card">
+        <h2>📦 Spare Inventory Management</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {# Show Add Spare form only if user is admin #}
+        {% if current_user.role == 'admin' %}
+        <form method="POST" class="inventory-form">
+            <div class="form-row">
+                <input type="text" name="name" placeholder="Spare Name" required>
+                <input type="text" name="company" placeholder="Company Name" required>
+                <input type="number" name="quantity" placeholder="Quantity" required>
+                <input type="number" step="0.01" name="price" placeholder="Price" required>
+                <button type="submit" class="btn-login">Add Spare</button>
+            </div>
+        </form>
+        <hr>
+        {% endif %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    {% if current_user.role == 'admin' %}
+                        <th>Action</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for spare in spares %}
+                <tr>
+                    <td>{{ spare.name }}</td>
+                    <td>{{ spare.company }}</td>
+                    <td>{{ spare.quantity }}</td>
+                    <td>₹{{ spare.price }}</td>
+                    {% if current_user.role == 'admin' %}
+                    <td>
+                        <a href="{{ url_for('edit_spare', spare_id=spare.id) }}">Edit</a> |
+                        <a href="{{ url_for('delete_spare', spare_id=spare.id) }}">Delete</a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

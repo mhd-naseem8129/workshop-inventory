@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Spare{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-card">
+        <h2>✏️ Edit Spare</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="name">🧩 Spare Name</label>
+                <input type="text" id="name" name="name" value="{{ spare.name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="company">🏢 Company</label>
+                <input type="text" id="company" name="company" value="{{ spare.company }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">📦 Quantity</label>
+                <input type="number" id="quantity" name="quantity" value="{{ spare.quantity }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">💰 Price (₹)</label>
+                <input type="number" step="0.01" id="price" name="price" value="{{ spare.price }}" required>
+            </div>
+
+            <button type="submit" class="btn-login">Update Spare</button>
+            <a href="{{ url_for('inventory') }}" class="btn-logout" style="margin-left: 10px;">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

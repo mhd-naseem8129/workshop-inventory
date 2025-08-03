@@ -1,0 +1,509 @@
+/* ---------- General ---------- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 30px;
+}
+
+/* ---------- Login Page ---------- */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.login-card {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-card h2 {
+    margin-bottom: 25px;
+    color: #333333;
+    font-size: 26px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444444;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.2);
+}
+
+.btn-login {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #0056b3;
+}
+
+/* ---------- Dashboard Page ---------- */
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    padding: 0 20px;
+}
+
+.dashboard-card {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    max-width: 700px;
+    width: 100%;
+}
+
+.dashboard-card h2 {
+    margin-bottom: 20px;
+    color: #222;
+    font-size: 28px;
+}
+
+.role-label {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.admin-section ul,
+.staff-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.admin-section li,
+.staff-section li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.btn-logout {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 20px;
+    background-color: #dc3545;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-logout:hover {
+    background-color: #c82333;
+}
+
+/* ---------- Flash Messages ---------- */
+.flash-message {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+}
+
+.flash-message.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* ---------- Inventory Form ---------- */
+.inventory-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.inventory-form input,
+.inventory-form button {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.inventory-form input {
+    flex: 1 1 180px;
+    max-width: 200px;
+    min-width: 150px;
+    box-sizing: border-box;
+}
+
+.inventory-form button {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 12px 20px;
+    flex: 1 1 auto;
+    max-width: 150px;
+    transition: background-color 0.3s ease;
+}
+
+.inventory-form button:hover {
+    background-color: #0056b3;
+}
+
+/* ---------- Inventory Table ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ========== Global Settings ========== */
+:root {
+  --bg: #f4f6f9;
+  --text: #222;
+  --card: #ffffff;
+  --primary: #007bff;
+  --danger: #dc3545;
+  --success: #28a745;
+  --low-stock: #ffcccc;
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #e0e0e0;
+  --card: #1e1e1e;
+  --primary: #1e90ff;
+  --danger: #ff6b6b;
+  --success: #66bb6a;
+  --low-stock: #4c1c1c;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+/* ========== Layout ========== */
+.dashboard-container {
+  max-width: 960px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.dashboard-card {
+  background-color: var(--card);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.06);
+}
+
+/* ========== Headers ========== */
+h2, h3 {
+  color: var(--text);
+}
+
+/* ========== Forms ========== */
+form {
+  margin-top: 20px;
+}
+
+input, select, button {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin: 6px 0;
+  width: 100%;
+  box-sizing: border-box;
+  transition: 0.3s ease;
+  background-color: #fff;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select {
+  background-color: #2c2c2c;
+  color: #fff;
+  border-color: #444;
+}
+
+input:focus, select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+button {
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* ========== Flash Messages ========== */
+.flash-message {
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.flash-message.success {
+  background-color: var(--success);
+  color: #fff;
+}
+
+.flash-message.danger {
+  background-color: var(--danger);
+  color: #fff;
+}
+
+/* ========== Table ========== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+table th, table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+[data-theme="dark"] table th {
+  background-color: #2c2c2c;
+  color: #ccc;
+}
+
+.low-stock {
+  background-color: var(--low-stock);
+  color: #b30000;
+  font-weight: bold;
+}
+
+/* ========== Utility ========== */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.btn-logout {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 20px;
+  background-color: var(--danger);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.btn-logout:hover {
+  background-color: #c82333;
+}
+
+/* ========== Dark Mode Toggle ========== */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.theme-toggle button {
+  background-color: transparent;
+  color: var(--text);
+  border: 2px solid var(--text);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+
+  .dashboard-card {
+    padding: 20px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: var(--card);
+    padding: 12px;
+  }
+
+  table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 12px;
+    width: 45%;
+    padding-right: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+/* ---------- Staff Table Styling ---------- */
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.styled-table thead {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.styled-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.role-badge {
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.admin-badge {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.staff-badge {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.delete-link {
+    color: #dc3545;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.delete-link:hover {
+    text-decoration: underline;
+}
+
+.no-delete {
+    color: gray;
+    font-style: italic;
+}

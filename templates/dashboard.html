@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-card">
+        <h2>Welcome, {{ user.username }} 👋</h2>
+        <p class="role-label">Role: <strong>{{ user.role | capitalize }}</strong></p>
+
+        {% if user.role == 'admin' %}
+        <div class="admin-section">
+            <p>You are an <strong>Admin</strong>. You have full access to:</p>
+            <ul>
+                <li>🛠️ <a href="{{ url_for('inventory') }}">Manage Spare Parts</a></li>
+                <li>🧾 <a href="{{ url_for('sales') }}">Sales Tracker</a></li>
+                <li>📊 <a href="#">View Reports</a></li>
+                <li>👥 <a href="{{ url_for('manage_staff') }}">Manage Staff</a></li>
+                <li>👷 <a href="{{ url_for('view_employees') }}">Employee Records</a></li>
+            </ul>
+
+        </div>
+        {% else %}
+        <div class="staff-section">
+            <p>You are a <strong>Staff Member</strong>. You can:</p>
+            <ul>
+                <li>🔍 <a href="{{ url_for('inventory') }}">View Available Parts</a></li>
+                <li>🧾 <a href="{{ url_for('sales') }}">Record Sales</a></li>
+            </ul>
+        </div>
+        {% endif %}
+
+        <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+    </div>
+</div>
+{% endblock %}
